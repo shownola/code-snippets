@@ -4,7 +4,8 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.json
   def index
-    @snippets = Snippet.all
+    # @snippets = Snippet.all
+    set_snippets
   end
 
   # GET /snippets/1
@@ -62,6 +63,26 @@ class SnippetsController < ApplicationController
   end
 
   private
+
+    def set_snippets
+      tag_name = params[:tag]
+      lang_name = params[:lang]
+      filter_by_name(tag_name, lang_name)
+    end
+
+    def filter_by_name(tag_name, lang_name)
+      if !tag_name.nil?
+        tag = Tag.find_by_name(tag_name)
+        @snippets = tag.nil? ? Snippet.all : tag.snippets
+      elsif !lang_name.nil?
+        lang = Language.find_by_name(lang)
+        @snippets = lang.nil? ? Snippet.all : lang.snippets
+      else
+        @snippets = Snippet.all
+      end
+      return @snippets
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_snippet
       @snippet = Snippet.find(params[:id])
@@ -69,6 +90,6 @@ class SnippetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def snippet_params
-      params.require(:snippet).permit(:title, :body)
+      params.require(:snippet).permit(:title, :body, :all_tags, :language_id)
     end
 end
