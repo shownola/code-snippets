@@ -1,0 +1,84 @@
+Command Line:
+
+$ rails app:template LOCATION='https://railsby...
+
+$ rails g scaffold snippets title body:text
+  invoke  active_record
+      create    db/migrate/20210114182046_create_snippets.rb
+      create    app/models/snippet.rb
+      invoke    test_unit
+      create      test/models/snippet_test.rb
+      create      test/fixtures/snippets.yml
+      invoke  resource_route
+       route    resources :snippets
+      invoke  scaffold_controller
+      create    app/controllers/snippets_controller.rb
+      invoke    erb
+      create      app/views/snippets
+      create      app/views/snippets/index.html.erb
+      create      app/views/snippets/edit.html.erb
+      create      app/views/snippets/show.html.erb
+      create      app/views/snippets/new.html.erb
+      create      app/views/snippets/_form.html.erb
+      invoke    test_unit
+      create      test/controllers/snippets_controller_test.rb
+      create      test/system/snippets_test.rb
+      invoke    helper
+      create      app/helpers/snippets_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/snippets/index.json.jbuilder
+      create      app/views/snippets/show.json.jbuilder
+      create      app/views/snippets/_snippet.json.jbuilder
+      invoke  assets
+      invoke    scss
+      create      app/assets/stylesheets/snippets.scss
+      invoke  scss
+      create    app/assets/stylesheets/scaffolds.scss
+
+$ rails g scaffold languages name:string:index
+  [WARNING] The model name 'languages' was recognized as a plural, using the singular 'language' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20210114182218_create_languages.rb
+      create    app/models/language.rb
+      invoke    test_unit
+      create      test/models/language_test.rb
+      create      test/fixtures/languages.yml
+      invoke  resource_route
+       route    resources :languages
+      invoke  scaffold_controller
+      create    app/controllers/languages_controller.rb
+      invoke    erb
+      create      app/views/languages
+      create      app/views/languages/index.html.erb
+      create      app/views/languages/edit.html.erb
+      create      app/views/languages/show.html.erb
+      create      app/views/languages/new.html.erb
+      create      app/views/languages/_form.html.erb
+      invoke    test_unit
+      create      test/controllers/languages_controller_test.rb
+      create      test/system/languages_test.rb
+      invoke    helper
+      create      app/helpers/languages_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/languages/index.json.jbuilder
+      create      app/views/languages/show.json.jbuilder
+      create      app/views/languages/_language.json.jbuilder
+      invoke  assets
+      invoke    scss
+      create      app/assets/stylesheets/languages.scss
+      invoke  scss
+   identical    app/assets/stylesheets/scaffolds.scss
+
+$ rails g scaffold tags name:string:index
+
+$ rails g model taggable tag:references snippet:references
+  invoke  active_record
+    create    db/migrate/20210114182945_create_taggables.rb
+    create    app/models/taggable.rb
+    invoke    test_unit
+    create      test/models/taggable_test.rb
+    create      test/fixtures/taggables.yml
+
+$ rails g migration add_languages_to_snippets language:references
