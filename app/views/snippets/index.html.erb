@@ -1,28 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Snippets</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Snippet</th>
+      <th scope="col">Tags</th>
+      <th scope="col" colspan="3">Manage</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @snippets.each do |snippet| %>
-      <tr>
-        <td><%= snippet.title %></td>
-        <td><%= snippet.body %></td>
-        <td><%= link_to 'Show', snippet %></td>
-        <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-        <td><%= link_to 'Destroy', snippet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <%= @snippets.each do |snippet| %>
+    <tr>
+      <th scope="row"><%= snippet.id %></th>
+      <td><%= link_to snippet.title, snippet %></td>
+      <td><%= snippet.body %></td>
+      <td>
+        <% snippet.tags.each do |tag| %>
+          <%= link_to tag.name, snippets_path(tag: tag.name) %>
+        <% end %>
+      </td>
+      <td><%= link_to "Show", snippet %></td>
+      <td><%= link_to "Edit", edit_snippet_path(snippet) %></td>
+      <td><%= link_to "Delete", snippet, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
+
+
 
 <br>
 
