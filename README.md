@@ -8,5 +8,7 @@ An app that handles a collection of code snippets for use in other projects.
 
 * Bootstrap implemented using RailsBytes
 
+* Highlight.js used for syntax highlighting
+
 
 * ...
