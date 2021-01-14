@@ -75,7 +75,7 @@ class SnippetsController < ApplicationController
         tag = Tag.find_by_name(tag_name)
         @snippets = tag.nil? ? Snippet.all : tag.snippets
       elsif !lang_name.nil?
-        lang = Language.find_by_name(lang)
+        lang = Language.find_by_name(lang_name)
         @snippets = lang.nil? ? Snippet.all : lang.snippets
       else
         @snippets = Snippet.all

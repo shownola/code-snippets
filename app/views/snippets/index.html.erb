@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @snippets.each do |snippet| %>
+    <% @snippets.each do |snippet| %>
     <tr>
       <th scope="row"><%= snippet.id %></th>
       <td><%= link_to snippet.title, snippet %></td>

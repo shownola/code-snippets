@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
 
 <p>
   <strong>Title:</strong>
@@ -6,9 +7,16 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
-  <%= @snippet.body %>
+  <strong>Code:</strong>
+  <pre>
+    <code class="hljs <%= @snippet.language.name %>">
+      <%= @snippet.body %>
+    </code>
+  </pre>
+
 </p>
+
+</div>
 
 <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
 <%= link_to 'Back', snippets_path %>
